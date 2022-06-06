@@ -14,9 +14,9 @@ This repository includes files with plain SQL that can be used to recreate a dat
 
 👤 **Author1**
 
-- GitHub: [@githubhandle](https://github.com/sainingo)
-- Twitter: [@twitterhandle](https://twitter.com/saningoInn)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/sainingo/)
+- GitHub: [@sainingo](https://github.com/sainingo)
+- Twitter: [@sainingoInn](https://twitter.com/saningoInn)
+- LinkedIn: [sainingo](https://www.linkedin.com/in/sainingo/)
 
 ## 🤝 Contributing
 
