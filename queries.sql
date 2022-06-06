@@ -1,8 +1,5 @@
 /*Queries that provide answers to the questions from all projects.*/
 
--- SELECT * from animals WHERE name = 'Luna';
-
--- Find all animals whose name ends in "mon".
 SELECT * from animals WHERE name LIKE '%mon';
 
 SELECT name FROM animals WHERE date_of_birth BETWEEN '2016-01-01' AND '2019-01-01';
