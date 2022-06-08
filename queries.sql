@@ -17,19 +17,22 @@ SELECT * from animals WHERE name = 'Gabumon';
 SELECT * from animals WHERE weight_kg BETWEEN 10.4 AND 17.3;
 
 UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
+
+BEGIN;
 UPDATE animals SET species = 'pokemon' WHERE species = NULL;
 DELETE FROM animals;
 
 ROLLBACK BeforeDelete;
 
-BEGIN;
+
+/*Delete all animals born after Jan 1st, 2022.*/
 DELETE FROM animals WHERE date_of_birth > '2022-01-01';
--- SAVE POINT
+SAVEPOINT SP1;
 
 -- UPDATE ALL ANIMALS WEIGHT BY MULTIPLY BY -1
 UPDATE animals SET weight_kg = (weight_kg * (-1));
 
-ROLLBACK SAVEPOINT;
+ROLLBACK SP1;
 
 -- UPDATE ALL ANIMALS WEIGHTS WHICH ARE NEGATIVE AFTER WEIGHT MULTIPLIED BY -1
 UPDATE animals SET weight_kg = (weight_kg * -1)  WHERE weight_kg < 0;
@@ -41,3 +44,15 @@ SELECT COUNT(*) FROM animals;
 
 -- ANIMALS WHO HAVE NEVER TRIED TO ESCAPE
 SELECT COUNT(*) FROM animals WHERE escape_attempts = 0;
+
+-- Averege weight of the Animals
+SELECT AVG(weight_kg) FROM animals;
+
+-- Who escapes the most, neutered or not neutered
+SELECT neutered, MAX(escape_attempts) FROM animals GROUP BY neutered;
+
+-- What is the minimum and maximum weight of each type of animal?
+SELECT species, MAX(weight_kg), MIN(weight_kg) FROM animals GROUP BY species;
+
+-- What is the average number of escape attempts per animal type of those born between 1990 and 2000?
+SELECT species, AVG(escape_attempts) FROM animals WHERE date_of_birth BETWEEN '1990-01-01' AND '2000-12-31' GROUP BY species;

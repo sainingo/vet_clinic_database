@@ -11,4 +11,4 @@ CREATE TABLE public.animals
     PRIMARY KEY (id)
 );
 
-ALTER TABLE animals ADD species character
+ALTER TABLE animals ADD species character(255);
