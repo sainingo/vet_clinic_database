@@ -10,3 +10,5 @@ CREATE TABLE public.animals
     weight_kg double precision NOT NULL,
     PRIMARY KEY (id)
 );
+
+ALTER TABLE animals ADD species character(255);
