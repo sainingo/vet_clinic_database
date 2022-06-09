@@ -37,3 +37,43 @@ alter table animals add column species_id int references species(id);
 
 -- Add column owner_id which is a foreign key referencing the owners table
 alter table animals add column owner_id int references owners(id);
+
+COMMIT;
+
+/* Begin the trsnsaction */
+BEGIN;
+
+
+-- Create a table named vets with the following columns
+create table vets (id serial, name varchar(100), age int, date_of_graduation date, primary key(id));
+
+COMMIT;
+
+/* Begin the trsnsaction */
+BEGIN;
+
+-- Create the specialization table with two columns and foreign key constraints
+create table specializations(
+    species_id INT,
+    vet_id INT,
+    PRIMARY KEY(species_id, vet_id),
+    CONSTRAINT species_id_fk FOREIGN KEY(species_id) REFERENCES species(id),
+    CONSTRAINT vet_id_fk FOREIGN KEY(vet_id) REFERENCES vets(id)
+);
+
+COMMIT;
+
+/*Begin transaction*/
+BEGIN;
+
+-- Create a "join table" called visits to handle this relationship
+create table visits(
+    animals_id INT,
+    vets_id INT,
+    date_of_visit DATE,
+    PRIMARY KEY(animals_id, vets_id, date_of_visit),
+    CONSTRAINT animal_id_fk FOREIGN KEY(animals_id) REFERENCES animals(id),
+    CONSTRAINT vet_id_fk FOREIGN KEY(vets_id) REFERENCES vets(id)
+);
+
+COMMIT;
