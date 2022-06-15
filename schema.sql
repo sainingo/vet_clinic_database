@@ -37,3 +37,16 @@ alter table animals add column species_id int references species(id);
 
 -- Add column owner_id which is a foreign key referencing the owners table
 alter table animals add column owner_id int references owners(id);
+
+
+-- Database perfomance and audit
+
+-- Add an email column to your owners table
+ALTER TABLE owners ADD COLUMN email VARCHAR(120);
+
+-- Any changes you made to your database schema USED indexes to reduce the querying time.
+CREATE INDEX index_animals_id ON visits(animals_id);
+create index idx_all on visits(vets_id) where vets_id = 1;
+
+create index idx_2 on visits(vets_id) where vets_id = 2;
+anaylyze;
