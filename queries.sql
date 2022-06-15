@@ -82,3 +82,7 @@ on animals.owner_id = owners.id where escape_attempts < 1 and owner_id = 5;
 
 -- Who owns the most animals?
 select full_name, count(owner_id) from owners join animals on owners.id = animals.owner_id group by full_name order by count(name) desc;
+
+
+-- Use EXPLAIN ANALYZE on the previous queries to check what is happening. Take screenshots of them - they will be necessary later.
+explain analyze SELECT COUNT(*) FROM visits where animals_id = 1;
